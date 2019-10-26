@@ -85,19 +85,19 @@
   // make title and axes labels
   function makeLabels() {
     svgContainer.append('text')
-      .attr('x', 600)
+      .attr('x', 300)
       .attr('y', 50)
       .style('font-size', '20pt')
       .text("Countries by Life Expectancy and Fertility Rate");
 
     svgContainer.append('text')
-      .attr('x', 770)
-      .attr('y', 850)
+      .attr('x', 400)
+      .attr('y', 600)
       .style('font-size', '15pt')
       .text('Fertility Rates (Avg Children per Woman)');
 
     svgContainer.append('text')
-      .attr('transform', 'translate(30, 500)rotate(-90)')
+      .attr('transform', 'translate(30, 400)rotate(-90)')
       .style('font-size', '15pt')
       .text('Life Expectancy (years)');
   }
@@ -113,7 +113,7 @@
     // make size scaling function for population
     let pop_map_func = d3.scaleLinear()
       .domain([pop_limits[0], pop_limits[1]])
-      .range([5, 150]);
+      .range([3, 80]);
 
     // mapping functions
     let xMap = map.x;
@@ -167,7 +167,7 @@
     // function to scale x value
     let xScale = d3.scaleLinear()
       .domain([limits.xMin - 0.5, limits.xMax + 0.5]) // give domain buffer room
-      .range([50, 1700]);
+      .range([100, 1150]);
 
     // xMap returns a scaled x value from a row of data
     let xMap = function(d) { return xScale(xValue(d)); };
@@ -175,7 +175,7 @@
     // plot x-axis at bottom of SVG
     let xAxis = d3.axisBottom().scale(xScale);
     svgContainer.append("g")
-      .attr('transform', 'translate(50, 800)')
+      .attr('transform', 'translate(0, 550)')
       .call(xAxis);
 
     // return y value from a row of data
@@ -184,7 +184,7 @@
     // function to scale y
     let yScale = d3.scaleLinear()
       .domain([limits.yMax + 5, limits.yMin - 5]) // give domain buffer
-      .range([50, 800]);
+      .range([50, 550]);
 
     // yMap returns a scaled y value from a row of data
     let yMap = function (d) { return yScale(yValue(d)); };
